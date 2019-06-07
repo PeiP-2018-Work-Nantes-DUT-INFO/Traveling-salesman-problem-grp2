@@ -9,7 +9,7 @@ public class GestionMatrice {
 	private File file;
 	private ArrayList<Ville> liste;
 	private float[][] matriceA;
-	
+
 	@SuppressWarnings("unused")
 	private int nombreVille;
 	
@@ -21,9 +21,7 @@ public class GestionMatrice {
 		
 		this.matriceA = new float[nombreVille][nombreVille];
 		this.initMatrice();
-		
-		
-		
+
 		
 	}
 
@@ -48,7 +46,7 @@ public class GestionMatrice {
 		Scanner sc = null;
 		String line = null;
 		String[] champs = null;
-		this.file = new File("/comptes/etudiant/E183665L/Documents/dossier/villes_Fit_A_5.csv");
+		this.file = new File("data/villes_Fit_A_5.csv");
 		
 		try {
 			

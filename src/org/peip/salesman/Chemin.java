@@ -5,12 +5,12 @@ import java.util.ArrayList;
 public class Chemin extends ArrayList<Integer> {
     private int distancetotale;
 
-    public chemin(int distancetotale) {
+    public Chemin(int distancetotale) {
         super();
         this.distancetotale = distancetotale;
     }
 
-    public chemin() {
+    public Chemin() {
         this(0);
     }
 

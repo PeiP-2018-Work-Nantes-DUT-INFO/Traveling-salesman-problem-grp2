@@ -2,7 +2,6 @@ package org.peip.salesman;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 public class Chemin extends ArrayList<Integer> {
     private int distancetotale;

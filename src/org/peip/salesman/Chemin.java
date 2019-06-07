@@ -2,23 +2,23 @@ package org.peip.salesman;
 
 import java.util.ArrayList;
 
-public class Chemin extends ArrayList {
-    private int distanceTotale;
+public class Chemin extends ArrayList<Integer> {
+    private int distancetotale;
 
-    public Chemin(int distanceTotale) {
+    public chemin(int distancetotale) {
         super();
-        this.distanceTotale = distanceTotale;
+        this.distancetotale = distancetotale;
     }
 
-    public Chemin() {
+    public chemin() {
         this(0);
     }
 
-    public int getDistanceTotale() {
-        return distanceTotale;
+    public int getdistancetotale() {
+        return distancetotale;
     }
 
-    public void setDistanceTotale(int distanceTotale) {
-        this.distanceTotale = distanceTotale;
+    public void setdistancetotale(int distancetotale) {
+        this.distancetotale = distancetotale;
     }
 }

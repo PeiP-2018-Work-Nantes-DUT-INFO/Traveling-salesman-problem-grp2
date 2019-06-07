@@ -1,7 +1,8 @@
 package org.peip.salesman;
 
-import org.peip.salesman.AlgorithmCreation.AlgorithmCreation;
-import org.peip.salesman.GestionMatrice;
+import org.peip.salesman.AlgorithmCreation.PlusProcheVoisin;
+
+import java.util.Random;
 
 public class Main {
 
@@ -9,7 +10,7 @@ public class Main {
 		GestionMatrice g = new GestionMatrice();
 		System.out.println(g.toString());
 		System.out.println("Fin du programme..");
-		AlgorithmCreation ac = new AlgorithmCreation(g.getMatriceA());
+		PlusProcheVoisin.creerChemin(g, (new Random()).nextInt(10));
 	}
 
 }

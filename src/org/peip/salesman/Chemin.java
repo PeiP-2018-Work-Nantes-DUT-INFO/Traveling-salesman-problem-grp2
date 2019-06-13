@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Chemin extends ArrayList<Integer> {
-    private int distancetotale;
+    private float distancetotale;
 
     public Chemin(int distancetotale) {
         super();
@@ -15,11 +15,11 @@ public class Chemin extends ArrayList<Integer> {
         this(0);
     }
 
-    public int getdistancetotale() {
+    public float getdistancetotale() {
         return distancetotale;
     }
 
-    public void setdistancetotale(int distancetotale) {
+    public void setdistancetotale(float distancetotale) {
         this.distancetotale = distancetotale;
     }
 

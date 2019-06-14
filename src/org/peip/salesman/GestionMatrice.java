@@ -54,7 +54,6 @@ public class GestionMatrice {
 				line = sc.nextLine();
 				line = line.replace(',', '.');
 				champs = line.split(";");
-				System.out.println(champs[0] + " " + champs[1] + " " + champs[2]);
 				liste.add(new Ville(champs[0], Float.parseFloat(champs[1]), Float.parseFloat(champs[2])));
 			}
 		} catch (FileNotFoundException e) {

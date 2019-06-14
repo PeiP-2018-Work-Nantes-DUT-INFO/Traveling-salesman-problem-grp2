@@ -18,7 +18,6 @@ public class RatioXYDistance {
 		float[][] matrice = matriceVille.getMatriceA();
 		Chemin chemin = new Chemin();
 
-
 		float distanceAB;
 		float distanceTotale = 0;
 		double ratio;
@@ -28,27 +27,21 @@ public class RatioXYDistance {
 		int destination = 0;
 
 		for (int i=0; i < villes.size() - 1; i++) {
-			// DEBUG
-			// System.out.printf("\nRecherche depuis la ville ID°%d :\n", origine.getId());
+
+
 			distanceAB = 0;
 			ratio = 0;
-			for (int j=0; j < villes.size(); j++) {
-				// System.out.print("ok |");
-				if (!chemin.contains(j)) {
-					// Si le trajet ne contient pas déjà cette ville
 
-					if ((villes.get(j).getX()*villes.get(j).getY())/matrice[origine][j] > ratio) {
+			for (int j=0; j < villes.size(); j++) {
+				if (!chemin.contains(j) && (villes.get(j).getX()*villes.get(j).getY())/matrice[origine][j] > ratio) {
 						ratio = (villes.get(j).getX()*villes.get(j).getY())/matrice[origine][j];
 						distanceAB = matrice[origine][j];
 						destination = j;
-						// DEBUG
-						// System.out.printf("Un angle de %3.1f° a été trouvé !\n", angleRef);
-					}
 				}
 
 			}
-			// DEBUG
-			// System.out.printf("Segment %d%d ajouté !\n", origine.getId(), destination.getId());
+
+
 			distanceTotale += distanceAB;
 			chemin.add(destination);
 			origine = destination;

@@ -9,12 +9,11 @@ public class RatioXYDistance {
 	 * @param indexDepart la ville de départ du chemin
 	 */
 	public static Chemin creerChemin(float[][] matriceDistance, int indexDepart, int indexBis) {
-		/*
 
 			int distanceAB;
 		double ratio;
 
-		this.add(matrice.listeVilles.get(indexDepart));
+		this.add(indexDepart);
 		Ville origine = matrice.listeVilles.get(indexDepart);
 		Ville destination = matrice.listeVilles.get(0);
 
@@ -49,7 +48,6 @@ public class RatioXYDistance {
 		distanceTotale = distanceTotale + matrice.tableau[origine.getId()][indexDepart];
 
 
-		 */
 		return null;
 	}
 }

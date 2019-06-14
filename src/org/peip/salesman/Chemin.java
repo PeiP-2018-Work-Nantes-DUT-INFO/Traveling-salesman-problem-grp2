@@ -30,4 +30,12 @@ public class Chemin extends ArrayList<Integer> {
         }
         return villeTmp;
     }
+    
+    public float calcDist(float[][] matrice) {
+    	float distance = 0;
+    	for(int i = 0 ; i < this.size()-1; i++) {
+    		distance += matrice[this.get(i)][this.get(i+1)];
+    	}
+    	return distance;
+    }
 }

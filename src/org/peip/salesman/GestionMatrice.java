@@ -21,8 +21,6 @@ public class GestionMatrice {
 		
 		this.matriceA = new float[nombreVille][nombreVille];
 		this.initMatrice();
-
-		
 	}
 
 	public File getFile() {

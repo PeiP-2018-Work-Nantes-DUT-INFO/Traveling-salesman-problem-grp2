@@ -1,64 +1,76 @@
 package org.peip.salesman.AlgorithmCreation;
 
 import org.peip.salesman.Chemin;
+import org.peip.salesman.GestionMatrice;
 import org.peip.salesman.Ville;
+
+import java.util.ArrayList;
 
 public class AnglePlusOuvert {
 	/*
-	 * 
+	 *
 	 * @param matriceDistance la matrice des distances entre villes
 	 * @param indexDepart la première ville de départ du chemin
 	 * @param indexBis la seconde ville de départ du chemin
 	 */
-	public static Chemin creerChemin(float[][] matriceDistance, int indexDepart, int indexBis) {
-	/*	double angleRef;
+	public static Chemin creerChemin(GestionMatrice matriceVille, int indexDepart, int indexBis) {
+
+		ArrayList<Ville> villes = matriceVille.getListe();
+		float[][] matrice = matriceVille.getMatriceA();
+
+		double angleRef;
 		double angle = 0;
 
-		int distanceAB;
+		float distanceAB;
 
-		this.add(matrice.listeVilles.get(indexDepart));
-		this.add(matrice.listeVilles.get(indexDepartBis));
-		distanceTotale = distanceTotale + matrice.tableau[indexDepart][indexDepartBis];
-		Ville precedente = matrice.listeVilles.get(indexDepart);
-		Ville origine = matrice.listeVilles.get(indexDepartBis);
-		Ville destination = matrice.listeVilles.get(0);
+		Chemin chemin = new Chemin();
 
-		for (int i=0; i<matrice.nbVilles-2; i++) {
+		chemin.add(indexDepart);
+		chemin.add(indexBis);
+		float distanceTotale = matrice[indexDepart][indexBis];
+		int VillePrecedente = indexDepart;
+		int VilleOrigine = indexBis;
+		int VilleDestination = 0;
+
+		for (int i=0; i < villes.size() -2; i++) {
 			// DEBUG
 			// System.out.printf("\nRecherche depuis la ville ID°%d :\n", origine.getId());
 			distanceAB = 10000;
 			angleRef = 0;
-			for (Ville ville : matrice.listeVilles) {
+
+			for (int j=0; j < villes.size(); j++) {
 				// System.out.print("ok |");
-				if (!this.contains(ville)) {
+				if (!chemin.contains(j)) {
 					// Si le trajet ne contient pas déjà cette ville
-					double dAB = matrice.tableau[precedente.getId()][origine.getId()];
-					double dAC = matrice.tableau[precedente.getId()][ville.getId()];
-					double dBC = matrice.tableau[origine.getId()][ville.getId()];
+					double dAB = matrice[VillePrecedente][VilleOrigine];
+					double dAC = matrice[VillePrecedente][j];
+					double dBC = matrice[VilleOrigine][j];
 
 					angle = Math.toDegrees(Math.acos(((dAB*dAB)+(dBC*dBC)-(dAC*dAC))/(2*dAB*dBC)));
 
 					if (angle > angleRef) {
 						angleRef = angle;
-						distanceAB = matrice.tableau[origine.getId()][ville.getId()];
-						destination = ville;
-						// DEBUG
-						// System.out.printf("Un angle de %3.1f° a été trouvé !\n", angleRef);
+						distanceAB = matrice[VilleOrigine][j];
+						VilleDestination = j;
 					}
 				}
 
 			}
+
 			// DEBUG
 			// System.out.printf("Segment %d%d ajouté !\n", origine.getId(), destination.getId());
 			distanceTotale = distanceTotale + distanceAB;
-			this.add(destination);
-			precedente = origine;
-			origine = destination;
+			chemin.add(VilleDestination);
+			VillePrecedente = VilleOrigine;
+			VilleOrigine = VilleDestination;
 		}
 
-		this.add(matrice.listeVilles.get(indexDepart));
-		distanceTotale = distanceTotale + matrice.tableau[origine.getId()][indexDepart];
-		*/
-	return null;
+		chemin.add(indexDepart);
+
+		distanceTotale += matrice[VilleOrigine][indexDepart];
+
+		chemin.setdistancetotale(distanceTotale);
+
+		return chemin;
 	}
 }

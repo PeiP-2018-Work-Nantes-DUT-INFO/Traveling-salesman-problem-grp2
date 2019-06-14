@@ -20,32 +20,36 @@ public class PlusProcheVoisin {
 		Chemin chemin = new Chemin();
 
 		float distanceAB;
-		int origine = indexDepart;
+		int villeCourante = indexDepart;
 		chemin.add(indexDepart);
 		int destination = -1;
 		float distanceTotale = -1;
-		for (int i=0; i < villes.size()-1; i++) {
-			// DEBUG
-			// System.out.printf("\nRecherche depuis la ville ID°%d :\n", origine.getId());
-			distanceAB = 10000;
 
-			for (int j=0; i < villes.size()-1; j++) {
-				if (!chemin.contains(j)) {
-					// Si le trajet ne contientndexDepart pas déjà cette ville
-					if (matrice[origine][j] < distanceAB) {
-						distanceAB = matrice[origine][j] ;
-						destination = j;
-						// DEBUG
-						// System.out.printf("Un trajet de %d km a été trouvé !\n", matricePoids[origine.getId()][ville.getId()]);
-					}
+		for (int i=0; i < villes.size() - 1; i++) {
+
+			distanceAB = 10000000;
+
+			for (int j=0; j < villes.size(); j++) {
+				if (!chemin.contains(j) && matrice[villeCourante][j] < distanceAB) {
+					distanceAB = matrice[villeCourante][j] ;
+					destination = j;
 				}
 			}
-			// DBEUG
-			// System.out.printf("Segment %d%d ajouté !\n", origine.getId(), destination.getId());
-			distanceTotale = distanceTotale + distanceAB;
+
+			distanceTotale += distanceAB;
+
 			chemin.add(destination);
-			origine = destination;
-		}	return null;
+
+			villeCourante = destination;
+		}
+
+		distanceTotale += matrice[villeCourante][indexDepart];
+
+		chemin.setdistancetotale(distanceTotale);
+
+		chemin.add(indexDepart);
+
+		return chemin;
 	}
 
 }

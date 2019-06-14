@@ -10,8 +10,6 @@ public class RatioAngleDistance {
 	 * @param indexBis la seconde ville de départ du chemin
 	 */
 	public static Chemin creerChemin(float[][] matriceDistance, int indexDepart, int indexBis) {
-		// TODO Algorithme du plus proche voisin
-
 		/*
 
 		double angleRef;

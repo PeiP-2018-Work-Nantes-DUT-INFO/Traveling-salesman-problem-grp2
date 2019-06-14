@@ -16,19 +16,20 @@ public class PlusProcheVoisin {
 
 		int o = matriceVille.getListe().size();
 
-		Chemin chemin = algo(matriceVille, 0);
+		Chemin chemin = algo(matriceVille, 0, 190000000);
 
 		System.out.println("Le chemin de base : " + chemin);
 		System.out.println("Distance du chemin de base : " + chemin.getdistancetotale());
 
 		for(int i = 1; i < o; i++){
 
-
-			Chemin cheminTMP = algo(matriceVille, i);
+			Chemin cheminTMP = algo(matriceVille, i, chemin.getdistancetotale());
 
 			if(chemin.getdistancetotale() > cheminTMP.getdistancetotale()) {
 				chemin = cheminTMP;
 			}
+
+			System.out.println("Stat : "+ i+"/"+o);
 
 		}
 
@@ -36,7 +37,7 @@ public class PlusProcheVoisin {
 	}
 
 
-	public static Chemin algo(GestionMatrice matriceVille, int indexDepart){
+	public static Chemin algo(GestionMatrice matriceVille, int indexDepart, float maxValue){
 
 		ArrayList<Ville> villes = matriceVille.getListe();
 		float[][] matrice = matriceVille.getMatriceA();
@@ -65,6 +66,14 @@ public class PlusProcheVoisin {
 			chemin.add(destination);
 
 			villeCourante = destination;
+
+
+			// MOYEN DE REDUIRE UN PEU LE NOMBRE DE BOUCLE
+			if(distanceTotale >= maxValue){
+				chemin.setdistancetotale(100000000);
+				return chemin;
+			}
+
 		}
 
 		distanceTotale += matrice[villeCourante][indexDepart];

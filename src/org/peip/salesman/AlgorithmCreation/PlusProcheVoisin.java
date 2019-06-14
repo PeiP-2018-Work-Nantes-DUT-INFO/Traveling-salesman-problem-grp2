@@ -12,7 +12,31 @@ public class PlusProcheVoisin {
 	 * @param matriceDistance la matrice des distances entre villes
 	 * @param indexDepart la ville de départ du chemin
 	 */
-	public static Chemin creerChemin(GestionMatrice matriceVille, int indexDepart) {
+	public static Chemin creerChemin(GestionMatrice matriceVille) {
+
+		int o = matriceVille.getListe().size();
+
+		Chemin chemin = algo(matriceVille, 0);
+
+		System.out.println("Le chemin de base : " + chemin);
+		System.out.println("Distance du chemin de base : " + chemin.getdistancetotale());
+
+		for(int i = 1; i < o; i++){
+
+
+			Chemin cheminTMP = algo(matriceVille, i);
+
+			if(chemin.getdistancetotale() > cheminTMP.getdistancetotale()) {
+				chemin = cheminTMP;
+			}
+
+		}
+
+		return chemin;
+	}
+
+
+	public static Chemin algo(GestionMatrice matriceVille, int indexDepart){
 
 		ArrayList<Ville> villes = matriceVille.getListe();
 		float[][] matrice = matriceVille.getMatriceA();
@@ -45,11 +69,11 @@ public class PlusProcheVoisin {
 
 		distanceTotale += matrice[villeCourante][indexDepart];
 
+		chemin.add(indexDepart);
+
 		chemin.setdistancetotale(distanceTotale);
 
-		chemin.add(indexDepart);
 
 		return chemin;
 	}
-
 }

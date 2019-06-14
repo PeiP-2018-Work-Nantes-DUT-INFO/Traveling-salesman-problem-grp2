@@ -18,6 +18,7 @@ public class RatioXYDistance {
 		float[][] matrice = matriceVille.getMatriceA();
 		Chemin chemin = new Chemin();
 
+
 		float distanceAB;
 		float distanceTotale = 0;
 		double ratio;

@@ -10,11 +10,11 @@ public class Main {
 
 	public static void main(String[] args) {
 		GestionMatrice g = new GestionMatrice();
-		System.out.println(g.toString());
-		Chemin chemin = RatioAngleDistance.creerChemin(g, 0, 1);
 
-		System.out.println("LE FAMEUX CHEMIN");
-		System.out.println(chemin);
+		Chemin chemin = PlusProcheVoisin.creerChemin(g);
+
+		System.out.println("Chemin : " + chemin);
+		System.out.println("Distance du chemin : " + chemin.getdistancetotale());
 	}
 
 }

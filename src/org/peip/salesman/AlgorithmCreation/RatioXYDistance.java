@@ -1,6 +1,10 @@
 package org.peip.salesman.AlgorithmCreation;
 
 import org.peip.salesman.Chemin;
+import org.peip.salesman.GestionMatrice;
+import org.peip.salesman.Ville;
+
+import java.util.ArrayList;
 
 public class RatioXYDistance {
 	/*
@@ -8,29 +12,35 @@ public class RatioXYDistance {
 	 * @param matriceDistance la matrice des distances entre villes
 	 * @param indexDepart la ville de départ du chemin
 	 */
-	public static Chemin creerChemin(float[][] matriceDistance, int indexDepart, int indexBis) {
+	public static Chemin creerChemin(GestionMatrice matriceVille, int indexDepart) {
 
-			int distanceAB;
+		ArrayList<Ville> villes = matriceVille.getListe();
+		float[][] matrice = matriceVille.getMatriceA();
+		Chemin chemin = new Chemin();
+
+
+		float distanceAB;
+		float distanceTotale = 0;
 		double ratio;
 
-		this.add(indexDepart);
-		Ville origine = matrice.listeVilles.get(indexDepart);
-		Ville destination = matrice.listeVilles.get(0);
+		chemin.add(indexDepart);
+		int origine = indexDepart;
+		int destination = 0;
 
-		for (int i=0; i<matrice.nbVilles-1; i++) {
+		for (int i=0; i < villes.size() - 1; i++) {
 			// DEBUG
 			// System.out.printf("\nRecherche depuis la ville ID°%d :\n", origine.getId());
 			distanceAB = 0;
 			ratio = 0;
-			for (Ville ville : matrice.listeVilles) {
+			for (int j=0; j < villes.size(); j++) {
 				// System.out.print("ok |");
-				if (!this.contains(ville)) {
+				if (!chemin.contains(j)) {
 					// Si le trajet ne contient pas déjà cette ville
 
-					if ((ville.getX()*ville.getY())/matrice.tableau[origine.getId()][ville.getId()] > ratio) {
-						ratio = (ville.getX()*ville.getY())/matrice.tableau[origine.getId()][ville.getId()];
-						distanceAB = matrice.tableau[origine.getId()][ville.getId()];
-						destination = ville;
+					if ((villes.get(j).getX()*villes.get(j).getY())/matrice[origine][j] > ratio) {
+						ratio = (villes.get(j).getX()*villes.get(j).getY())/matrice[origine][j];
+						distanceAB = matrice[origine][j];
+						destination = j;
 						// DEBUG
 						// System.out.printf("Un angle de %3.1f° a été trouvé !\n", angleRef);
 					}
@@ -39,15 +49,16 @@ public class RatioXYDistance {
 			}
 			// DEBUG
 			// System.out.printf("Segment %d%d ajouté !\n", origine.getId(), destination.getId());
-			distanceTotale = distanceTotale + distanceAB;
-			this.add(destination);
+			distanceTotale += distanceAB;
+			chemin.add(destination);
 			origine = destination;
 		}
 
-		this.add(matrice.listeVilles.get(indexDepart));
-		distanceTotale = distanceTotale + matrice.tableau[origine.getId()][indexDepart];
+		chemin.add(indexDepart);
+		distanceTotale += matrice[origine][indexDepart];
 
+		chemin.setdistancetotale(distanceTotale);
 
-		return null;
+		return chemin;
 	}
 }

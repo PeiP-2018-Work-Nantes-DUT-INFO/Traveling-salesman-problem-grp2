@@ -15,6 +15,6 @@ public class MainDecroiserMeilleur {
 	
 	public static void main(String [] args) {
 		GestionMatrice g = new GestionMatrice();
-		System.out.println("Le temps d'execution de création DecroiserMeilleur a été de " + TestDecroiserMeilleur(g, PlusProcheVoisin.creerChemin(g, 0))/1000 + " µs.\n");
+		System.out.println("Le temps d'execution de crï¿½ation DecroiserMeilleur a ï¿½tï¿½ de " + TestDecroiserMeilleur(g, PlusProcheVoisin.creerChemin(g))/1000 + " ï¿½s.\n");
 	}
 }

@@ -13,6 +13,6 @@ public class MainRatioAngleDistance {
 	
 	public static void main(String [] args) {
 		GestionMatrice g = new GestionMatrice();
-		System.out.println("Le temps d'execution de création RatioAngleDistance a été de " + TestRatioAngleDistance(g)/1000 + " µs.\n");
+		System.out.println("Le temps d'execution de crÃ©ation RatioAngleDistance a Ã©tÃ© de " + TestRatioAngleDistance(g)/1000 + " Âµs.\n");
 	}
 }

@@ -44,7 +44,7 @@ public class GestionMatrice {
 		Scanner sc = null;
 		String line = null;
 		String[] champs = null;
-		this.file = new File("data/villes_Fit_A_500.csv");
+		this.file = new File("data/villes_Fit_A_100.csv");
 
 		try {
 			

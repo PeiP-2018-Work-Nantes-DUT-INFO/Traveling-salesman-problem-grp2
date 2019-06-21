@@ -9,9 +9,9 @@ import org.peip.salesman.GestionMatrice;
 public class MainOptiSimpleSwap {
 	public static long testSimpleSwap(GestionMatrice m, Chemin c) {
 		long t1 = System.nanoTime();
-		Chemin cheminOptimisé= SimpleSwap.simpleSwapAlgorithm(m, c);
+		Chemin cheminOptimise= SimpleSwap.simpleSwapAlgorithm(m, c);
 		long t2 = System.nanoTime();
-		System.out.println(String.format("Longueur après:%f\nAprès opti: %s", cheminOptimisé.getdistancetotale(), cheminOptimisé.toString()));
+		System.out.println(String.format("Longueur après:%f\nAprès opti: %s", cheminOptimise.getdistancetotale(), cheminOptimise.toString()));
 		return t2-t1;
 	}
 	

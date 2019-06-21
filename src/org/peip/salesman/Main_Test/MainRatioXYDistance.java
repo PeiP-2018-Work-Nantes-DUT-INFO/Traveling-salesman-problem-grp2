@@ -14,6 +14,6 @@ public class MainRatioXYDistance {
 	
 	public static void main(String [] args) {
 		GestionMatrice g = new GestionMatrice();
-		System.out.println("Le temps d'execution de création RatioXYDistance a été de " + TestRatioXYDistance(g)/1000 + " µs.\n");
+		System.out.println("Le temps d'execution de crÃ©ation RatioXYDistance a Ã©tÃ© de " + TestRatioXYDistance(g)/1000 + " Âµs.\n");
 	}
 }
